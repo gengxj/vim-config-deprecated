@@ -15,7 +15,7 @@ set fdm=syntax            		  " floader lines
 " set cursorcolumn         		  " high light cursor column
 " set cursorline           	          " high light cursor line
 " hi CursorLine   cterm=NONE ctermbg=gray ctermfg=black guibg=NONE guifg=NONE
-highlight Search ctermfg=black ctermbg=yellow guifg=black guibg=yellow
+"highlight Search ctermfg=black ctermbg=yellow guifg=black guibg=yellow
 set linespace=-2           		  " set line high space
 set encoding=utf-8 			  " file encoding setting
 set fileencodings=utf-8,gbk,ucs-bom,cp936 "redad file orders
@@ -27,24 +27,6 @@ set ignorecase smartcase 		  "search cease smart
 filetype plugin indent on
 autocmd FileType cpp,java,sh setlocal et sta sw=4 sts=4
 set sm        				" bracket mactch
-
-"" OmniCppComplete
-" ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 0
-let OmniCpp_MayCompleteDot = 1
-let OmniCpp_MayCompleteArrow = 1
-let OmniCpp_MayCompleteScope = 1
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-let OmniCpp_DisplayMode = 1
-hi Pmenu ctermfg=0   	"  menu colors
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest
-if has("autocmd")
-	  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 
 " Tagbar
 nmap <silent> <F12> :TagbarToggle<CR>
@@ -68,13 +50,14 @@ let g:LookupFile_TagExpr = '"./filenametags"'
 
 " echofunc
 "let g:EchoFuncShowOnStatus = 1
-"
-" Move emacs like
+
+" emacs-like key bindings
+" " Move
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-p> <Up>
-"inoremap <C-n> <Down>
-"inoremap <C-b> <Left>
+inoremap <C-n> <Down>
+inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <M-b> <C-o>b
 inoremap <M-f> <C-o>w
@@ -112,15 +95,33 @@ let g:airline_right_sep = ''
 
 " neocomplcache
 " let g:acp_enableAtStartup = 1
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_min_syntax_length = 5
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_min_keyword_length = 5
-let g:neocomplete#sources#syntax#min_keyword_length = 5
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplcache_auto_completion_start_length = 6
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_min_syntax_length = 5
+"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+"let g:neocomplcache_min_keyword_length = 5
+"let g:neocomplete#sources#syntax#min_keyword_length = 5
+"let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#enable_at_startup = 1
+"let g:neocomplcache_auto_completion_start_length = 6
+
+"" OmniCppComplete
+" ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 0
+let OmniCpp_MayCompleteDot = 1
+let OmniCpp_MayCompleteArrow = 1
+let OmniCpp_MayCompleteScope = 1
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+let OmniCpp_DisplayMode = 1
+hi Pmenu ctermfg=0   	"  menu colors
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest
+if has("autocmd")
+	  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " Auto pair
 let g:AutoPairsLoaded = 0
@@ -128,3 +129,19 @@ let g:AutoPairsLoaded = 0
 " highlight white space at eol
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
+
+" bundle
+set nocompatible               " be iMproved
+filetype off                   " required!
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle
+" required!
+Plugin 'gmarik/vundle'
+" My Bundles here:
+Plugin 'https://github.com/altercation/vim-colors-solarized.git'
+call vundle#end()
+filetype plugin indent on     " required!
+
+set background=dark
+colorscheme solarized
