@@ -94,16 +94,16 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 " neocomplcache
-" let g:acp_enableAtStartup = 1
-"let g:neocomplcache_enable_at_startup = 1
-"let g:neocomplcache_enable_smart_case = 1
-"let g:neocomplcache_min_syntax_length = 5
-"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-"let g:neocomplcache_min_keyword_length = 5
-"let g:neocomplete#sources#syntax#min_keyword_length = 5
-"let g:neocomplete#enable_smart_case = 1
-"let g:neocomplete#enable_at_startup = 1
-"let g:neocomplcache_auto_completion_start_length = 6
+let g:acp_enableAtStartup = 1
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 5
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_min_keyword_length = 5
+let g:neocomplete#sources#syntax#min_keyword_length = 5
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_at_startup = 0
+let g:neocomplcache_auto_completion_start_length = 6
 
 "" OmniCppComplete
 " ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
@@ -126,10 +126,6 @@ endif
 " Auto pair
 let g:AutoPairsLoaded = 0
 
-" highlight white space at eol
-highlight WhitespaceEOL ctermbg=red guibg=red
-match WhitespaceEOL /\s\+$/
-
 " bundle
 set nocompatible               " be iMproved
 filetype off                   " required!
@@ -145,3 +141,7 @@ filetype plugin indent on     " required!
 
 set background=dark
 colorscheme solarized
+
+" highlight white space at eol
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
