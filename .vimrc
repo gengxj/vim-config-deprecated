@@ -140,6 +140,10 @@ call vundle#end()
 filetype plugin indent on     " required!
 
 set background=dark
+let g:solarized_termcolors=256
+if !has('gui_running')
+	let g:solarized_termtrans=1
+endif
 colorscheme solarized
 
 " highlight white space at eol
